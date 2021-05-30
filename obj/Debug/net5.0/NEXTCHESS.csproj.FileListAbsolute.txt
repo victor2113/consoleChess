@@ -1,0 +1,16 @@
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\obj\Debug\net5.0\NEXTCHESS.csprojAssemblyReference.cache
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\obj\Debug\net5.0\NEXTCHESS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\obj\Debug\net5.0\NEXTCHESS.AssemblyInfoInputs.cache
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\obj\Debug\net5.0\NEXTCHESS.AssemblyInfo.cs
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\obj\Debug\net5.0\NEXTCHESS.csproj.CoreCompileInputs.cache
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\bin\Debug\net5.0\NEXTCHESS.exe
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\bin\Debug\net5.0\NEXTCHESS.deps.json
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\bin\Debug\net5.0\NEXTCHESS.runtimeconfig.json
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\bin\Debug\net5.0\NEXTCHESS.runtimeconfig.dev.json
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\bin\Debug\net5.0\NEXTCHESS.dll
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\bin\Debug\net5.0\ref\NEXTCHESS.dll
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\bin\Debug\net5.0\NEXTCHESS.pdb
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\obj\Debug\net5.0\NEXTCHESS.dll
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\obj\Debug\net5.0\ref\NEXTCHESS.dll
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\obj\Debug\net5.0\NEXTCHESS.pdb
+C:\Users\SuperAdmin\Desktop\NEXTCHESS\obj\Debug\net5.0\NEXTCHESS.genruntimeconfig.cache
