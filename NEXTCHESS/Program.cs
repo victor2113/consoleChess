@@ -10,10 +10,11 @@ namespace NEXTCHESS
     {
         static void Main(string[] args)
         {
-            Chess chess = new Chess();
+            Chess chess = new Chess("rnbqkbnr/pp1111pp/8/8/8/8/PP11111P/RNBQKBNR w KQkq - 0 1");
             while (true)
             {
                 Console.WriteLine(ToAski(chess));
+                Console.WriteLine(chess.fen);
                 string move = Console.ReadLine();
                 if (move == "") break;
                 chess = chess.Move(move);
