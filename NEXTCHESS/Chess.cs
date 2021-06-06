@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
+using System.Collections;
 
 
 namespace NEXTCHESS
@@ -12,11 +13,16 @@ namespace NEXTCHESS
         public string fen { get; private set; }
         Board board;
         Moves moves;
+
+
+        List<FigureMoving> all;
+
         public Chess(string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
         {
             this.fen = fen;
             board = new Board(fen);
             moves = new Moves(board);
+            
         }
         Chess(Board board){
             this.board = board;
@@ -41,8 +47,29 @@ namespace NEXTCHESS
             Figure f = board.GetCoords(cell);
             return f == Figure.none ? '.' : (char)f;
         }
-        
 
+
+
+        public void FindAll(){
+            all = new List<FigureMoving>();
+            foreach(FigureOnCell fc in board.YieldFigures())
+                foreach(Cell to in Cell.YieldCells())
+                    {
+                        FigureMoving fm = new FigureMoving(fc,to);
+                        if(moves.CanMove(fm))
+                            all.Add(fm);
+                    }
+        }
+
+
+        public List<string> GetAll(){
+            FindAll();
+            List<string> list = new List<string>();
+            foreach(FigureMoving fm in all){
+                list.Add(fm.ToString());
+            }
+            return list;
+        }
 
     }
 }

@@ -13,8 +13,14 @@ namespace NEXTCHESS
             Chess chess = new Chess("rnbqkbnr/pp1111pp/8/8/8/8/PP11111P/RNBQKBNR w KQkq - 0 1");
             while (true)
             {
-                Console.WriteLine(ToAski(chess));
                 Console.WriteLine(chess.fen);
+                Console.WriteLine(ToAski(chess));
+
+                foreach(string moves in chess.GetAll()){
+                    Console.WriteLine(moves + "\t");
+                }
+                Console.WriteLine("");
+                Console.WriteLine("> ");
                 string move = Console.ReadLine();
                 if (move == "") break;
                 chess = chess.Move(move);

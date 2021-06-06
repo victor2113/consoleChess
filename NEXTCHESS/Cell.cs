@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
+using System.Collections;
 
 namespace NEXTCHESS
 {
@@ -11,6 +12,7 @@ namespace NEXTCHESS
         public static Cell none = new Cell(-8, -8);
         public int x { get; private set; }
         public int y { get; private set; }
+        public string name { get { return ((char)('a' + x)).ToString() + (y + 1).ToString(); } }
 
         public Cell(int x, int y)
         {
@@ -53,7 +55,20 @@ namespace NEXTCHESS
         }
 
 
-        
-       
+
+        public static IEnumerable<Cell> YieldCells()
+        {
+            for (int y = 0; y < 8; y++)
+            {
+                for (int x = 0; x < 8; x++)
+                {
+                    yield return new Cell(x, y);
+                }
+            }
+
+        }
+
+
+
     }
 }

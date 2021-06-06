@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
+using System.Collections;
 namespace NEXTCHESS
 {
     public class FigureMoving
@@ -12,10 +13,10 @@ namespace NEXTCHESS
         public Cell to { get; private set; }
         public Figure pawnPromotion { get; private set; }
 
-        public FigureMoving(FigureOnCell fc, Cell to, Cell from, Figure pawnPromotion = Figure.none)
+        public FigureMoving(FigureOnCell fc, Cell to, Figure pawnPromotion = Figure.none)
         {
             this.figure = fc.figure;
-            this.from = from;
+            this.from = fc.cell;
             this.to = to;
             this.pawnPromotion = pawnPromotion;
         }
@@ -40,5 +41,16 @@ namespace NEXTCHESS
 
         public int SignDx { get { return Math.Sign(Dx); } }
         public int SignDy { get { return Math.Sign(Dy); } }
+
+
+        public override string ToString()
+        {
+            string text =  (char)figure + from.name + to.name; 
+            if (pawnPromotion != Figure.none){
+                text+=(char)pawnPromotion;
+            }
+            return text;
+        }   
+
     }
 }

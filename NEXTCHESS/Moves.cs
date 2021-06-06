@@ -1,3 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Text;
+using System.Collections;
+
 namespace NEXTCHESS
 {
     public class Moves
@@ -38,7 +45,7 @@ namespace NEXTCHESS
 
                 case Figure.whiteQueen:
                 case Figure.blackQueen:
-                    return false;
+                    return canStraightMove();
 
                 case Figure.whiteRook:
                 case Figure.blackRook:
@@ -74,6 +81,18 @@ namespace NEXTCHESS
                 return true;
             }
             return false;
+        }
+        private bool canStraightMove()
+        {
+            Cell at = new Cell(fm.from.x, fm.from.y);
+            do
+            {
+                at = new Cell(at.x + fm.SignDx, at.y + fm.SignDy);
+                if (at == fm.to) return true;
+            } while (at.checkCell() && board.GetCoords(at) == Figure.none);
+
+            return false;
+
         }
 
     }
