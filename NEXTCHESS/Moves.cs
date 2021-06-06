@@ -49,11 +49,11 @@ namespace NEXTCHESS
 
                 case Figure.whiteRook:
                 case Figure.blackRook:
-                    return false;
+                    return (fm.SignDx == 0 || fm.SignDy == 0) && canStraightMove();
 
                 case Figure.whiteBishop:
                 case Figure.blackBishop:
-                    return false;
+                    return (fm.SignDx != 0 && fm.SignDy != 0) && canStraightMove();
 
                 case Figure.whiteKnight:
                 case Figure.blackKnight:
@@ -61,7 +61,7 @@ namespace NEXTCHESS
 
                 case Figure.whitePawn:
                 case Figure.blackPawn:
-                    return false;
+                    return CanPawnMove();
 
 
 
@@ -93,6 +93,50 @@ namespace NEXTCHESS
 
             return false;
 
+        }
+        private bool CanPawnMove()
+        {
+            if (fm.from.y < 1 && fm.from.y > 6) { return false; }
+            int stepY = fm.figure.GetColor() == Color.white ? 1 : -1;
+            return CanPawnGo(stepY) ||
+                    CanPawnJump(stepY) ||
+                    CanPawnEat(stepY);
+        }
+
+
+        private bool CanPawnGo(int stepY)
+        {
+            if (board.GetCoords(fm.to) == Figure.none)
+            {
+                if (fm.Dx == 0)
+                    if (fm.Dy == stepY)
+                        return true;
+            }
+            return false;
+
+        }
+        private bool CanPawnJump(int stepY)
+        {
+            if (board.GetCoords(fm.to) == Figure.none)
+            {
+                if (fm.Dx == 0)
+                    if (fm.Dy == 2 * stepY)
+                        if (fm.from.y == 1 || fm.from.y == 6)
+                            if ((board.GetCoords(new Cell(fm.from.x, fm.from.y + stepY))) == Figure.none)
+                                return true;
+            }
+            return false;
+
+        }
+        private bool CanPawnEat(int stepY)
+        {
+          if (board.GetCoords(fm.to) != Figure.none)
+            {
+                if (fm.AbsDx == 1)
+                    if (fm.Dy == stepY)     
+                     return true;
+            }
+            return false;
         }
 
     }
