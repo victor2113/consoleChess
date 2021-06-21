@@ -22,9 +22,10 @@ namespace NEXTCHESS
             this.fen = fen;
             board = new Board(fen);
             moves = new Moves(board);
-            
+
         }
-        Chess(Board board){
+        Chess(Board board)
+        {
             this.board = board;
             this.fen = board.fen;
             moves = new Moves(board);
@@ -34,9 +35,9 @@ namespace NEXTCHESS
         {//Qe2e6
 
             FigureMoving fm = new FigureMoving(move);
-            if(!moves.CanMove(fm)) return this;
+            if (!moves.CanMove(fm)) return this;
             Board nextBoard = board.Move(fm);
-            
+
             Chess nextChess = new Chess(nextBoard);
             return nextChess;
         }
@@ -50,22 +51,26 @@ namespace NEXTCHESS
 
 
 
-        public void FindAll(){
+        public void FindAll()
+        {
             all = new List<FigureMoving>();
-            foreach(FigureOnCell fc in board.YieldFigures())
-                foreach(Cell to in Cell.YieldCells())
-                    {
-                        FigureMoving fm = new FigureMoving(fc,to);
-                        if(moves.CanMove(fm))
+            foreach (FigureOnCell fc in board.YieldFigures())
+                foreach (Cell to in Cell.YieldCells())
+                {
+                    FigureMoving fm = new FigureMoving(fc, to);
+                    if (moves.CanMove(fm))
+                        if (!board.CheckAfter(fm))
                             all.Add(fm);
-                    }
+                }
         }
 
 
-        public List<string> GetAll(){
+        public List<string> GetAll()
+        {
             FindAll();
             List<string> list = new List<string>();
-            foreach(FigureMoving fm in all){
+            foreach (FigureMoving fm in all)
+            {
                 list.Add(fm.ToString());
             }
             return list;

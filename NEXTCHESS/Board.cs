@@ -78,11 +78,11 @@ namespace NEXTCHESS
                 if (y > 0) sb.Append('/');
             }
             string eight = "11111111";
-            for (int i = 8; i >=2; i--)
+            for (int i = 8; i >= 2; i--)
             {
-                sb.Replace(eight.Substring(0,i),i.ToString());
+                sb.Replace(eight.Substring(0, i), i.ToString());
             }
-            return sb.ToString(); 
+            return sb.ToString();
         }
 
 
@@ -102,13 +102,50 @@ namespace NEXTCHESS
         }
 
 
+        public Cell FindBad(){
+            Figure badKing =  curentColor == Color.black ? Figure.whiteKing :  Figure.blackKing;
+            foreach ( Cell cell in Cell.YieldCells())
+            {
+                if(GetCoords(cell) == badKing){
+                    return cell;
+                }
+            }
+            return Cell.none;
+        }
+        bool CanEatKing()
+        {
+            Cell badKing = FindBad();
+            Moves moves = new Moves(this);
+            foreach (FigureOnCell fc in YieldFigures())
+            {
+                FigureMoving fm = new FigureMoving(fc, badKing);
+                if (moves.CanMove(fm))
+                    return true;
+            }
+            return false;
+        }
+        public bool Check()
+        {
+            Board after = new Board(fen);
+            after.curentColor = curentColor.FlipColor(); 
+            return after.CanEatKing();
+        }
+
+        public bool CheckAfter(FigureMoving fm){
+            Board after = Move(fm);
+            return after.CanEatKing();
+        }
+
+
+
+
 
         public IEnumerable<FigureOnCell> YieldFigures()
         {
             foreach (Cell cell in Cell.YieldCells())
             {
-                if(GetCoords(cell).GetColor() == curentColor)
-                    yield return new FigureOnCell(GetCoords(cell),cell);
+                if (GetCoords(cell).GetColor() == curentColor)
+                    yield return new FigureOnCell(GetCoords(cell), cell);
             }
         }
     }
