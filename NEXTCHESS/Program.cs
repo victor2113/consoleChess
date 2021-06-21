@@ -15,7 +15,7 @@ namespace NEXTCHESS
             {
                 Console.WriteLine(chess.fen);
                 Console.WriteLine(ToAski(chess));
-
+                Console.WriteLine(chess.isCheck()? "CHECK" : " ");
                 foreach(string moves in chess.GetAll()){
                     Console.WriteLine(moves + "\t");
                 }

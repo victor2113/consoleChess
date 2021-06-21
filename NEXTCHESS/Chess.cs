@@ -35,7 +35,10 @@ namespace NEXTCHESS
         {//Qe2e6
 
             FigureMoving fm = new FigureMoving(move);
-            if (!moves.CanMove(fm)) return this;
+            if (!moves.CanMove(fm))
+                return this;
+            if (board.CheckAfter(fm))
+                return this;
             Board nextBoard = board.Move(fm);
 
             Chess nextChess = new Chess(nextBoard);
@@ -76,5 +79,10 @@ namespace NEXTCHESS
             return list;
         }
 
+
+        public bool isCheck()
+        {
+            return board.Check();
+        }
     }
 }
